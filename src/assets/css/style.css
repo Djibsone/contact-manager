@@ -1,0 +1,14 @@
+body {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    background-color: #f0fdf0 !important;
+}
+
+.contact-img {
+    width: 150px;
+    border-radius: 50%;
+}
+
+.contact-img-big {
+   width: 200px; 
+   border-radius: 50%; 
+}
