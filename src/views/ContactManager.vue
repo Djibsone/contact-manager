@@ -63,13 +63,13 @@
                 </ul>
               </div>
               <div class="col-sm-1 d-flex flex-column align-items-center">
-                <router-link to="/contacts/view/:contactId" class="btn btn-warning my-1">
+                <router-link :to="`/contacts/view/${contact.id}`" class="btn btn-warning my-1">
                   <i class="fa fa-eye"></i>
                 </router-link>
-                <router-link to="/contacts/edit/:contactId" class="btn btn-primary my-1">
+                <router-link :to="`/contacts/edit/${contact.id}`" class="btn btn-primary my-1">
                   <i class="fa fa-pencil"></i>
                 </router-link>
-                <button class="btn btn-danger my-1">
+                <button class="btn btn-danger my-1" @click="delContact(contact.id)">
                   <i class="fa fa-trash"></i>
                 </button>
               </div>
@@ -107,7 +107,22 @@ export default {
     }
   },
   methods: {
-
+    delContact: async function(contactId) {
+      try {
+        this.loading = true
+        let response = await ContactService.deleteContact(contactId);
+        if (response) {
+          let response = await ContactService.getAllContacts(); // getting fresh data
+          this.contacts = response.data;
+          this.loading = false;
+        } else {
+          return this.$router.push('/contacts/edit/${this.contactId}');
+        }
+      } catch (error) {
+        this.errorMsg = error;
+        this.loading = false;
+      }
+    }
   }
  
 }

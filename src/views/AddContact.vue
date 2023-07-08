@@ -12,31 +12,31 @@
     <div class="col-md-4">
       <form @submit.prevent="submitCreate()">
         <div class="mb-2">
-          <input v-model="contact.name" type="text" class="form-control" placeholder="Name">
+          <input v-model="contact.name" required type="text" class="form-control" placeholder="Name">
         </div>
         <div class="mb-2">
           <input v-model="contact.photo" type="text" class="form-control" placeholder="Photo URL">
         </div>
         <div class="mb-2">
-          <input v-model="contact.email" type="email" class="form-control" placeholder="Email">
+          <input v-model="contact.email" required type="email" class="form-control" placeholder="Email">
         </div>
         <div class="mb-2">
-          <input v-model="contact.mobile" type="text" class="form-control" placeholder="Mobile">
+          <input v-model="contact.mobile" required type="number" class="form-control" placeholder="Mobile">
         </div>
         <div class="mb-2">
-          <input v-model="contact.company" type="text" class="form-control" placeholder="Company">
+          <input v-model="contact.company" required type="text" class="form-control" placeholder="Company">
         </div>
         <div class="mb-2">
-          <input v-model="contact.title" type="text" class="form-control" placeholder="Title">
+          <input v-model="contact.title" required type="text" class="form-control" placeholder="Title">
         </div>
         <div class="mb-2">
-          <select v-model="contact.groupId" class="form-control" v-if="groups.length > 0">
+          <select required v-model="contact.groupId" class="form-control" v-if="groups.length > 0">
             <option value="">Select Group</option>
             <option :value="group.id" v-for="group of groups" :key="group.id">{{ group.name }}</option>
           </select>
         </div>
         <div class="mb-2">
-          <input type="submit" name="" id="" class="btn btn-success" value="Create">
+          <input type="submit" class="btn btn-success" value="Create">
         </div>
       </form>
     </div>
